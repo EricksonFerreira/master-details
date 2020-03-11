@@ -57,7 +57,7 @@ export class CategoryService {
   private jsonDataToCategories(jsonData: any[]): Category[] {
     const categories: Category[] = [];
     jsonData.forEach(el => categories.push(el as Category));
-    categories;
+    return categories;
   }
 
   private jsonDataToCategory(jsonData: any): Category {
