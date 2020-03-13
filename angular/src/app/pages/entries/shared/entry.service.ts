@@ -11,7 +11,7 @@ import { Entry } from './entry.model';
 })
 export class EntryService {
 
-  private apiPath: string = "api/categories";
+  private apiPath: string = "api/entries";
   constructor( private http: HttpClient ) { }
 
   getAll(): Observable<Entry[]> {
@@ -55,13 +55,18 @@ export class EntryService {
   
     // Métodos privados
   private jsonDataToCategories(jsonData: any[]): Entry[] {
-    const categories: Entry[] = [];
-    jsonData.forEach(el => categories.push(el as Entry));
-    return categories;
+    const entries: Entry[] = [];
+    
+    jsonData.forEach(el => {
+        const entry =  Object.assign(new Entry(),el);
+        entries.push(entry);
+    });
+    
+    return entries;
   }
 
   private jsonDataToEntry(jsonData: any): Entry {
-    return jsonData as Entry;
+    return Object.assign(new Entry(), jsonData);
   }
 
   private handleError(error: any): Observable<any> {
