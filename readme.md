@@ -3,7 +3,7 @@
 	E-mail: erickson.ferreira@outlook.com.br
 
 ## O Sistema
-   Sistema de listagens de categorias e lançamentos de produtos.
+   Sistema de treinamento das tecnologias Angular e Laravel. No Angular iremos consumir uma api de categorias e lançamentos feita em Laravel.
 
 ## MakeFile
 Basicamente em poucas palavras o “Makefile” instala as dependencias do Angular.
