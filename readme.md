@@ -3,7 +3,7 @@
 	E-mail: erickson.ferreira@outlook.com.br
 
 ## O Sistema
-   Sistema de listagens de categorias e lançamentos.
+   Sistema de listagens de categorias e lançamentos de produtos.
 
 ## MakeFile
 Basicamente em poucas palavras o “Makefile” instala as dependencias do Angular.
