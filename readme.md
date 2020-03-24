@@ -1,7 +1,6 @@
 ## Colaborador
-
-Erickson Ferreira da Silva Nascimento
-E-mail: erickson.ferreira@outlook.com.br
+	Erickson Ferreira da Silva Nascimento
+	E-mail: erickson.ferreira@outlook.com.br
 
 ## O Sistema
    Sistema de listagens de categorias e lançamentos.
