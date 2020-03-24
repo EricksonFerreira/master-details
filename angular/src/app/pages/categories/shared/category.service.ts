@@ -11,48 +11,48 @@ import { Category } from './category.model';
 })
 export class CategoryService {
 
-  private apiPath: string = "api/categories";
+  private apiPath = 'api/categories';
   constructor( private http: HttpClient ) { }
 
   getAll(): Observable<Category[]> {
     return this.http.get(this.apiPath).pipe(
       catchError(this.handleError),
       map(this.jsonDataToCategories)
-    )
+    );
   }
-  
-  getById(id:number): Observable<Category> {
+
+  getById(id: number): Observable<Category> {
     const url = `${this.apiPath}/${id}`;
     return this.http.get(url).pipe(
       catchError(this.handleError),
       map(this.jsonDataToCategory)
-    )
+    );
   }
-  
+
   create(category: Category): Observable<Category> {
     return this.http.post(this.apiPath, category).pipe(
       catchError(this.handleError),
-      map(this.jsonDataToCategory)    
-      )
+      map(this.jsonDataToCategory)
+      );
     }
-  
+
   update(category: Category): Observable<Category> {
     const url = `${this.apiPath}/${category.id}`;
-    return this.http.put('sadfsadf', category).pipe(
+    return this.http.put(url, category).pipe(
         catchError(this.handleError),
         map(() => category)
-        )  
+        );
       }
-      
+
   delete(id: number): Observable<any> {
     const url = `${this.apiPath}/${id}`;
     return this.http.delete(url).pipe(
       catchError(this.handleError),
       map(() => null)
-    )
+    );
   }
-  
-  
+
+
     // Métodos privados
   private jsonDataToCategories(jsonData: any[]): Category[] {
     const categories: Category[] = [];
@@ -65,7 +65,7 @@ export class CategoryService {
   }
 
   private handleError(error: any): Observable<any> {
-    console.log("Erro na requisição -> ", error);
+    console.log('Erro na requisição -> ', error);
     return throwError(error);
   }
 
