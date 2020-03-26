@@ -2,12 +2,12 @@ import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {ActivatedRoute, Route, Router } from '@angular/router';
 
-import { Category } from "../shared/category.model";
-import { CategoryService} from "../shared/category.service";
+import { Category } from '../shared/category.model';
+import { CategoryService } from '../shared/category.service';
 
-import { switchMap } from "rxjs/operators";
+import { switchMap } from 'rxjs/operators';
 
-import toastr from "toastr";
+import toastr from 'toastr';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked  {
 
   submitForm(){
     this.submittingForm = true;
-    if (this.currentAction == "new"){
+    if (this.currentAction == 'new'){
       this.createCategory();
     }else{
       this.updateCategory();
@@ -53,16 +53,16 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked  {
   // Métodos privados
 
   //Verifica se é a pagina de editar ou de nova categoria
-  private setCurrentAction(){ 
-    if(this.route.snapshot.url[0].path == "new"){
-      this.currentAction = "new";
+  private setCurrentAction(){
+    if(this.route.snapshot.url[0].path == 'new'){
+      this.currentAction = 'new';
     }else{
-      this.currentAction = "edit";
+      this.currentAction = 'edit';
     }
   }
 
   //Deixa os campos do formulário vazios
-  private buildCategoryForm(){ 
+  private buildCategoryForm(){
     this.categoryForm = this.formBuilder.group({
       id: [null],
       name: [null, [Validators.required, Validators.minLength(2)]],
@@ -72,14 +72,14 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked  {
 
   //Caso o formulário seja de edição, preenche os dados do mesmo com os dados da categoria
   private loadCategory(){
-    if(this.currentAction == "edit") {
+    if(this.currentAction == 'edit') {
       this.route.paramMap.pipe(
-        switchMap(params => this.categoryService.getById(+params.get("id")))
+        switchMap(params => this.categoryService.getById(+params.get('id')))
       )
       .subscribe(
         (category) => {
           this.category = category;
-          this.categoryForm.patchValue(category); // O patchValue preeche o formulario de Editar Formulário    
+          this.categoryForm.patchValue(category); // O patchValue preeche o formulario de Editar Formulário
         },
         (error) => alert('Ocorreu um erro no servidor, tente mais tarde')
       )
@@ -88,10 +88,10 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked  {
 
   // Prevenção de mostrar o null no titulo da categoria quando a pagina demorar para carregar
   private setPageTitle(){
-    if(this.currentAction == "new") {
-      this.pageTitle = "Cadastro de Nova Categoria";
+    if(this.currentAction == 'new') {
+      this.pageTitle = 'Cadastro de Nova Categoria';
     }else{
-      const categoryName = this.category.name || "";
+      const categoryName = this.category.name || ';
       this.pageTitle = 'Editando Categoria: ' + categoryName;
     }
   }
@@ -116,10 +116,10 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked  {
   }
 
   private actionsForSuccess(category: Category){
-    toastr.success("Solicitação processada com sucesso!");
+    toastr.success('Solicitação processada com sucesso!');
 
     // redireciona e recarrega a pagina do component
-    this.router.navigateByUrl("categories", {skipLocationChange:true}).then(
+    this.router.navigateByUrl('categories', {skipLocationChange:true}).then(
       () => this.router.navigate(['categories', category.id, 'edit'])
     )
   }
@@ -133,7 +133,7 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked  {
       this.serverErrorMessages = JSON.parse(error._body).errors;
       // Vai retornar neste estilo: ['Nome já existe', 'Descrição está invalida']
     }else{
-      this.serverErrorMessages = ["Falha na comunicação com o sevidor. Por favor, tente mais tarde."]
+      this.serverErrorMessages = ['Falha na comunicação com o sevidor. Por favor, tente mais tarde.']
     }
   }
 }
