@@ -1,3 +1,9 @@
+package:= cd angular; npm install; ng serve
 conf:
-	cd angular
-	npm install
+	$(package)
+
+master:
+	git checkout master
+
+te:
+	git commit -m "$(@:git-%=%)"
