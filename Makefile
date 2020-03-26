@@ -1,7 +1,6 @@
 package:= cd angular; npm install; ng serve
-master:= git checkout master
+master:= git checkout origin/master
 branch:= git checkout project-improvements
-git:= git add .; git commit -m "$m"; git push 
 
 conf:
 	$(package)
@@ -11,6 +10,9 @@ m:
 
 b:
 	$(branch)
-	
-git:
-	$(git)
+
+# make c m=Mensagem 
+c:
+	git add .
+	git commit -m "$m"
+	git push 
