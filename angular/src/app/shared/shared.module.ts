@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BredCrumbComponent } from './components/bred-crumb/bred-crumb.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [BredCrumbComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     // shared modules
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BredCrumbComponent
   ]
 })
 export class SharedModule { }
