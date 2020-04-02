@@ -128,7 +128,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   }
 
   protected actionsForError(error) {
-    toastr.error('Ocoorreu um erro ao processar a sua solicitação!');
+    toastr.error('Ocorreu um erro ao processar a sua solicitação!');
 
     this.submittingForm = false;
 
