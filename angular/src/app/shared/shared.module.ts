@@ -3,19 +3,23 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+
 import { BredCrumbComponent } from './components/bred-crumb/bred-crumb.component';
 import { PageHeaderComponent } from './components/page-header/page-header.component';
+import { FormFieldErrorComponent } from './components/form-field-error/form-field-error.component';
 
 
 
 @NgModule({
   declarations: [
-    BredCrumbComponent, PageHeaderComponent
+    BredCrumbComponent,
+    PageHeaderComponent,
+    FormFieldErrorComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     // shared modules
@@ -25,7 +29,8 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
 
     // shared components
     PageHeaderComponent,
-    BredCrumbComponent
+    BredCrumbComponent,
+    FormFieldErrorComponent
   ]
 })
 export class SharedModule { }
