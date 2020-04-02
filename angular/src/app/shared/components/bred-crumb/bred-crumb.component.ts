@@ -20,7 +20,6 @@ export class BredCrumbComponent implements OnInit {
   }
   isTheLastItem(item: BreadCrumbItem): boolean {
     const index = this.items.indexOf(item);
-    console.log(index);
     return index + 1 === this.items.length;
   }
 
