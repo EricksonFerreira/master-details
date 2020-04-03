@@ -1,31 +1,16 @@
-<nav class="mb-5">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a routerLink="/">Home</a>
-        </li>
-        <li class="breadcrumb-item">
-            <a routerLink="/categories">Categorias</a>
-        </li>
-        <li class="breadcrumb-item active">
-            {{pageTitle}}
-        </li>
-    </ol>
-</nav>
+<app-bred-crumb
+  [items]="[{text: 'Categorias', link: '/categories'}, {text: pageTitle}]"
+></app-bred-crumb>
 
-<div class="row mb-4">
-    <div class="col-md">
-        <h1 class="h2 border-left pl-2">
-            {{pageTitle}}
-        </h1>
-    </div>
-    <div class="col-md">
-        <a routerLink="/categories" class="btn btn-light float-right">
-            << Voltar
-        </a>
-    </div>
-</div>
+<app-page-header
+  [page-title] =" pageTitle "
+  button-text = "<< Voltar"
+  button-link = "/categories"
+  button-class = "btn-light"
+></app-page-header>
 
-<form [formGroup] = "categoryForm" (submit)="submitForm()">
+
+<form [formGroup] = "resourceForm" (submit)="submitForm()">
     <div class="card">
         <div class="card-header">
             Informações sobre as categorias
@@ -35,10 +20,8 @@
                 <div class="form-group col-md-4">
                     <label for="name">Nome</label>
                     <input type="text" class="form-control" id="name" formControlName="name">
-                    <div class="text-danger" *ngIf="categoryForm.get('name').invalid && categoryForm.get('name').touched">
-                        <div *ngIf="categoryForm.get('name').errors.required">dado obrigátorio</div>
-                        <div *ngIf="categoryForm.get('name').errors.minlength">deve ter no mínimo 2 caracteres</div>
-                    </div>
+
+                    <app-form-field-error [form-control]="resourceForm.get('name')"></app-form-field-error>
                 </div>
                 <div class="form-group col-md-8">
                     <label for="description">Descrição</label>
@@ -47,11 +30,9 @@
             </div>
         </div>
     </div>
-    <div class="alert alert-danger mt-4" *ngIf="serverErrorMessages">
-        <strong>Erro no servidor:</strong>
-        <ul>
-            <li *ngFor="let error of serverErrorMessages">{{error}}</li>
-        </ul>
-    </div>
-    <button [disabled]= "submittingForm || categoryForm.invalid" type="submit" class="btn btn-primary btn-lg float-right mt-3">Salvar</button>
-</form> 
+
+    <app-server-error-messages [server-error-messages] = "serverErrorMessages"></app-server-error-messages>
+
+
+    <button [disabled]= "submittingForm || resourceForm.invalid" type="submit" class="btn btn-primary btn-lg float-right mt-3">Salvar</button>
+</form>
