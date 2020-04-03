@@ -16,7 +16,7 @@
     <div class="form-row">
       <div class="form-group col-md-7">
         <label for="month">Mês</label>
-        <select #mounth name="month" id="month" class="form-control">
+        <select #month name="month" id="month" class="form-control">
           <option value="">Selecione um mês</option>
           <option value="1">Janeiro</option>
           <option value="2">Fevereiro</option>
@@ -27,8 +27,8 @@
           <option value="7">Julho</option>
           <option value="8">Agosto</option>
           <option value="9">Setembro</option>
-          <option value="10">Outubro</option>
-          <option value="11">Novermbro</option>
+          <option value="10" selected>Outubro</option>
+          <option value="11">Novembro</option>
           <option value="12">Dezembro</option>
         </select>
       </div>
@@ -38,7 +38,7 @@
           <option value="">Selecione um ano</option>
           <option value="2016">2016</option>
           <option value="2017">2017</option>
-          <option value="2018">2018</option>
+          <option value="2018" selected>2018</option>
           <option value="2019">2019</option>
           <option value="2020">2020</option>
         </select>
@@ -53,6 +53,7 @@
     </div>
   </div>
 </div>
+
 <!-- total -->
 <div class="card-deck mt-5 mb-5">
   <div class="card text-center text-white bg-success">
@@ -61,27 +62,27 @@
       </div>
       <div class="card-body">
         <h3 class="card-title">
-          1500
+          {{revenueTotal}}
         </h3>
       </div>
-  </div>
-  <div class="card text-center text-white bg-danger">
+    </div>
+    <div class="card text-center text-white bg-danger">
       <div class="card-hearder">
         TOTAL DE DESPESAS
       </div>
       <div class="card-body">
         <h3 class="card-title">
-          1500
+          {{expenseTotal}}
         </h3>
       </div>
-  </div>
-  <div class="card text-center text-white bg-info">
+    </div>
+    <div class="card text-center text-white bg-info">
       <div class="card-hearder">
         SALDO
       </div>
       <div class="card-body">
         <h3 class="card-title">
-          1500
+          {{balance}}
         </h3>
       </div>
   </div>
@@ -91,10 +92,10 @@
 <!-- gráficos -->
 <div class="row mt-5 mb-4">
   <div class="col-md-6">
-    GRÁFICO DE RECEITAS
+    <p-chart type="bar" [data]="revenueChartData" [options]="chartOptions"></p-chart>
   </div>
 
   <div class="col-md-6">
-    GRÁFICO DE DESPESAS
+    <p-chart type="bar" [data]="expenseChartData" [options]="chartOptions"></p-chart>
   </div>
 </div>
