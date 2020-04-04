@@ -18,11 +18,11 @@ Basicamente em poucas palavras o “Makefile” instala as dependencias do Angul
 cd master-details
 make conf(só funciona em sistemas linux)
 ```
-4. Deixe esse Terminal aberto e abra outro terminal, entre no diretório:
+4. Deixe esse terminal aberto e abra outro terminal no diretório:
 ```
 master-details/laravel
 ```
-5. Utilize esse comando:
+5. Utilize esse comando no segundo terminal:
 ```
 php artisan serve
 ```
