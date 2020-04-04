@@ -18,7 +18,7 @@ class EntryController extends Controller
                     ->select('categories.name as catName','entries.*')->get();
         return response()->json($entries);
     }
-    
+
     public function store(Request $request)
     {
         /*Adicionando todos esses itens da tabela entries*/
@@ -33,14 +33,14 @@ class EntryController extends Controller
         $entry->save();
         return  response()->json($entry);
     }
-    
+
     public function show($id)
     {
         /*Listando um item da tabela entries*/
         $entries = Entry::find($id);
         return response()->json($entries);
     }
-    
+
     public function update(Request $request, $id)
     {
         /*Atualizando um item da tabela entries*/
@@ -52,10 +52,10 @@ class EntryController extends Controller
 		$entry->date = $request->date;
 		$entry->paid = $request->paid;
 		$entry->categoryId = $request->categoryId;
-        $entry->save();    
+        $entry->save();
         return response()->json($entry);
     }
-    
+
     public function destroy($id)
     {
         /*Deletando um item da tabela entries*/

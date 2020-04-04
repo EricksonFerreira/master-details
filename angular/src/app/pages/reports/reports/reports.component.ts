@@ -96,6 +96,7 @@ export class ReportsComponent implements OnInit {
         const totalAmount = filteredEntries.reduce(
           (total, entry) => total + currencyFormatter.unformat(entry.amount, {code: 'BRL'}), 0
         );
+        console.log(totalAmount);
         chartData.push({
           categoryName: category.name,
           totalAmount
