@@ -11,6 +11,7 @@ export class Entry extends BaseResourceModel {
         public date?: string,
         public paid?: boolean,
         public categoryId?: number,
+        public catName?: string,
         public category?: Category
     ) {
       super();
@@ -18,7 +19,7 @@ export class Entry extends BaseResourceModel {
 
     static types = {
         expense: 'Despesa',
-        renevus: 'Receita'
+        revenue: 'Receita'
     };
 
     static fromJson(jsonData: any): Entry {

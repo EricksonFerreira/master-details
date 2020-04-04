@@ -58,7 +58,6 @@ export class EntryService extends BaseResourceService<Entry> {
         const entry =  Object.assign(new Entry(), el);
         entries.push(entry);
     });
-    console.log(entries);
     return entries;
   }
 
