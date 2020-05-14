@@ -3,3 +3,4 @@ Route::get('report/month={mes}&year={ano}', 'ReportController@getByMonthAndYear'
 
 Route::apiResource('category','CategoryController');
 Route::apiResource('entry','EntryController');
+Route::apiResource('album','AlbumController');
