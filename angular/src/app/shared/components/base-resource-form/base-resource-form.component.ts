@@ -16,7 +16,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
   resourceForm: FormGroup;
   pageTitle: string;
   serverErrorMessages: string[] = null;
-  submittingForm: boolean = false;
+  submittingForm = false;
 
   protected route: ActivatedRoute;
   protected router: Router;
@@ -101,6 +101,7 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
 
     this.resourceService.create(resource)
     .subscribe(
+      // tslint:disable-next-line: no-shadowed-variable
       resource => this.actionsForSuccess(resource),
       error => this.actionsForError(error)
     );
@@ -111,7 +112,10 @@ export abstract class BaseResourceFormComponent<T extends BaseResourceModel> imp
     console.log(resource);
     this.resourceService.update(resource)
     .subscribe(
-      resource => this.actionsForSuccess(resource),
+      // tslint:disable-next-line: no-shadowed-variable
+      resource => {
+        return this.actionsForSuccess(resource);
+      },
       error => this.actionsForError(error)
     );
   }
